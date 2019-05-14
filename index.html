@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    
+    <title>test</title>
+</head>
+<body>
+    <h2>This is a test</h2>
+</body>
+
+<script>
+
+var movie={
+        name: "best movie ever"
+    }
+
+axios.post("/get-movie", movie).then((res)=>{
+    console.log(res.data.data)
+})
+
+
+
+
+
+
+
+
+</script>
+
+</html>

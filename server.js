@@ -1,0 +1,59 @@
+
+//express
+const express = require('express');
+
+const path = require("path");
+
+//we make an instantiation of express
+const app = express();
+const axios =require("axios");
+
+const PORT = process.env.PORT || 3000;
+
+
+//this is very important to have for making api calls
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+
+
+
+
+
+
+app.listen(PORT, () => {
+    // console.log(process.env.NODE_ENV)
+    console.log(`port listening on port ${PORT}`);
+})
+
+
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
+// app.get('/home', function(req, res) {
+//     res.sendFile(path.join(__dirname + '/home.html'));
+// });
+
+
+
+
+//we make our api route and it is a post request
+app.post("/get-movie",(req,res)=>{
+
+// var test=["test", "test"]
+    console.log(req.body);
+
+var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
+    
+    //so are 
+
+    
+    axios.get(queryURL).then((data)=>{
+        // console.log(data.data)
+       res.json(data.data)
+    })
+    
+
+    // res.json(test)
+})
