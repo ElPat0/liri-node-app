@@ -14,6 +14,8 @@ const PORT = process.env.PORT || 3000;
 //this is very important to have for making api calls
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static('assets'))
+
 
 
 
