@@ -55,7 +55,7 @@ var queryURL = "https://www.omdbapi.com/?t=batman&y=&plot=short&apikey=trilogy";
 //-------------------//
     
     axios.get(queryURL).then((data)=>{
-        // console.log(data.data)
+        console.log(data.data)
        res.json(data.data)
     })
    //-------Bands API----------//
