@@ -55,7 +55,7 @@ var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yG
 //-------------------//
     
     axios.get(queryURL).then((data)=>{
-        console.log(data.data)
+       console.log(data.data)
        res.json(data.data)
     })
    //-------Bands API----------//
