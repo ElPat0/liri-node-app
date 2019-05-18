@@ -49,17 +49,21 @@ app.post("/get-movie",(req,res)=>{
 //var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
 //----------------//
 //---OMBD Api---
-var queryURL = "https://www.omdbapi.com/?t=boiler+room&y=&plot=short&apikey=trilogy";   
-    //so are 
+//var queryURL = "https://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";   
+var queryURL = "https://www.omdbapi.com/?t=batman&y=&plot=short&apikey=trilogy";   
 
+//-------------------//
     
     axios.get(queryURL).then((data)=>{
         // console.log(data.data)
        res.json(data.data)
     })
-    
+   //-------Bands API----------//
+   //var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
 
     // res.json(test)
 });
+
+//
 
 
