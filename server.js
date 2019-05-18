@@ -4,6 +4,8 @@ const express = require('express');
 
 const path = require("path");
 
+require('dotenv').config();
+
 //we make an instantiation of express
 const app = express();
 const axios = require("axios");
@@ -46,11 +48,11 @@ app.post("/get-movie",(req,res)=>{
 // var test=["test", "test"]
     console.log(req.body);
 
-var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
+// var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
 //----------------//
 //---OMBD Api---
-//var queryURL = "https://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";   
-//var queryURL = "https://www.omdbapi.com/?t=batman&y=&plot=short&apikey=trilogy";   
+var queryURL = "https://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";   
+var queryURL = `https://www.omdbapi.com/?t="${req.body.title}&y=&plot=short&apikey=${process.env.OMDB_KEY}`;   
 
 //-------------------//
     
@@ -65,5 +67,28 @@ var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yG
 });
 
 //
+app.post("/get-bands",(req,res)=>{
+
+    console.log(req.body);
+    res.json("got-bands");
+
+    //axios.get(queryURL).then((data)=>{
+    //    console.log(data.data)
+    //    res.json(data.data)
+    // })
+
+});
 
 
+app.post("/get-songs",(req,res)=>{
+
+    console.log(req.body);
+    res.json("got-songs");
+
+
+    //axios.get(queryURL).then((data)=>{
+    //    console.log(data.data)
+    //    res.json(data.data)
+    // })
+
+});
