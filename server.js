@@ -46,11 +46,11 @@ app.post("/get-movie",(req,res)=>{
 // var test=["test", "test"]
     console.log(req.body);
 
-//var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
+var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
 //----------------//
 //---OMBD Api---
 //var queryURL = "https://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";   
-var queryURL = "https://www.omdbapi.com/?t=batman&y=&plot=short&apikey=trilogy";   
+//var queryURL = "https://www.omdbapi.com/?t=batman&y=&plot=short&apikey=trilogy";   
 
 //-------------------//
     
