@@ -3,8 +3,8 @@
 function getMovie(){
 
     var movie = {
-        name: "best movie ever"
-        //name: $(userStuff).val
+        //name: "goddamn best movie"
+        name: $("#omdbSearch").val
     }
     
     
@@ -15,7 +15,9 @@ function getMovie(){
 function getBands(){
 
     var band = {
-        name: "goddamn best band"
+        //name: "goddamn best band"
+        name: $("#bandSearch").val
+
     }
 
     axios.post("/get-bands", band).then((res) => {
@@ -23,14 +25,24 @@ function getBands(){
     })
 }
 
+function getSong(){
+
+    var song = {
+        //name: "goddamn best song"
+        name: $("#spotifySearch").val
+
+    }
+
+    axios.post("/get-song", song).then((res) => {
+        console.log(res)
+    })
+}
+//movie search function
 getMovie();
-//getBands();
-
+//bands call function;
+getBands();
 //spotify call function
+getSong();
 
 
 
-//spotify
-//   ID = de6df564cf50424d91bef44189a517a8
-//   Secret = e98977fafb2e494db7e730395ae90b5c
-//   Herokuvar = SPOTIFY-KEY

@@ -4,6 +4,7 @@ const express = require('express');
 
 const path = require("path");
 
+//requiring the .env file for api keys
 require('dotenv').config();
 
 //we make an instantiation of express
@@ -41,54 +42,58 @@ app.get('/', function(req, res) {
 
 
 
-
+//   OMDB
 //we make our api route and it is a post request
 app.post("/get-movie",(req,res)=>{
 
 // var test=["test", "test"]
     console.log(req.body);
 
-// var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=HIqQtSoyCccofN3yGM5dSVHpNY0gyZU2";
-//----------------//
-//---OMBD Api---
-var queryURL = "https://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";   
+
 var queryURL = `https://www.omdbapi.com/?t="${req.body.title}&y=&plot=short&apikey=${process.env.OMDB_KEY}`;   
 
-//-------------------//
+
     
     axios.get(queryURL).then((data)=>{
        console.log(data.data)
        res.json(data.data)
     })
-   //-------Bands API----------//
-   //var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
-
-    // res.json(test)
 });
 
-//
+
+
+
+//   Bands
 app.post("/get-bands",(req,res)=>{
+
+    var queryURL = `https://rest.bandsintown.com/artists/${req.body.name}/events?app_id=${process.env.BANDS_KEY}`;
 
     console.log(req.body);
     res.json("got-bands");
 
-    //axios.get(queryURL).then((data)=>{
-    //    console.log(data.data)
-    //    res.json(data.data)
-    // })
+    axios.get(queryURL).then((data)=>{
+        console.log(data.data)
+        res.json(data.data)
+     })
 
 });
+// Spotify
+
 
 
 app.post("/get-songs",(req,res)=>{
+//this api doesnt seem to play well with syntax 
+    //var queryURL = "https://api.spotify.com/v1/artists/$" + ${req.query.name} + "/albums?album_type=SINGLE&offset=20&limit=10";
+    var queryURL = "https://api.spotify.com/v1/artists/${req.query.name}/albums?album_type=SINGLE&offset=20&limit=10";
+
 
     console.log(req.body);
-    res.json("got-songs");
+    res.json("got-song");
 
 
-    //axios.get(queryURL).then((data)=>{
-    //    console.log(data.data)
-    //    res.json(data.data)
-    // })
+    axios.get(queryURL).then((data)=>{
+        console.log(data.data)
+        res.json(data.data)
+     })
 
 });
