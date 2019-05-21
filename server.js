@@ -82,18 +82,55 @@ app.post("/get-bands",(req,res)=>{
 
 
 app.post("/get-songs",(req,res)=>{
-//this api doesnt seem to play well with syntax 
-    //var queryURL = "https://api.spotify.com/v1/artists/$" + ${req.query.name} + "/albums?album_type=SINGLE&offset=20&limit=10";
-    var queryURL = "https://api.spotify.com/v1/artists/${req.query.name}/albums?album_type=SINGLE&offset=20&limit=10";
+////this api doesnt seem to play well with syntax 
+//    //var queryURL = "https://api.spotify.com/v1/artists/$" + ${req.query.name} + "/albums?album_type=SINGLE&offset=20&limit=10";
+//    var queryURL = "https://api.spotify.com/v1/artists/${req.query.name}/albums?album_type=SINGLE&offset=20&limit=10";
+//
+//
+//    console.log(req.body);
+//    res.json("got-song");
+//
+//
 
 
-    console.log(req.body);
-    res.json("got-song");
-
-
+var Spotify = require('node-spotify-api');
+ 
+var spotify = new Spotify({
+    // should these be listed here, or referenced in the .env file in some way?
+  id: 'de6df564cf50424d91bef44189a517a8',
+  secret: 'e98977fafb2e494db7e730395ae90b5c'
+});
+ 
+spotify
+  .search({ type: 'track', query: 'All the Small Things' })
+  .then(function(response) {
+    console.log(response);
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
     axios.get(queryURL).then((data)=>{
         console.log(data.data)
         res.json(data.data)
      })
 
 });
+
+
+// this requirement is preventing the localhost server from running //fixed//
+//ar Spotify = require('node-spotify-api');
+//
+//ar spotify = new Spotify({
+//   // should these be listed here, or referenced in the .env file in some way?
+// id: 'de6df564cf50424d91bef44189a517a8',
+// secret: 'e98977fafb2e494db7e730395ae90b5c'
+//);
+//
+//potify
+// .search({ type: 'track', query: 'All the Small Things' })
+// .then(function(response) {
+//   console.log(response);
+// })
+// .catch(function(err) {
+//   console.log(err);
+// });
