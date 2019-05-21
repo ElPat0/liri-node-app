@@ -50,7 +50,7 @@ app.post("/get-movie",(req,res)=>{
     console.log(req.body);
 
 
-var queryURL = `https://www.omdbapi.com/?t="${req.body.title}&y=&plot=short&apikey=${process.env.OMDB_KEY}`;   
+var queryURL = `https://www.omdbapi.com/?t=${req.body.name}&y=&plot=short&apikey=${process.env.OMDB_KEY}`;   
 
 
     
@@ -68,8 +68,6 @@ app.post("/get-bands",(req,res)=>{
 
     var queryURL = `https://rest.bandsintown.com/artists/${req.body.name}/events?app_id=${process.env.BANDS_KEY}`;
 
-    console.log(req.body);
-    res.json("got-bands");
 
     axios.get(queryURL).then((data)=>{
         console.log(data.data)
@@ -103,7 +101,7 @@ var spotify = new Spotify({
  
 spotify
 //   req.body.name
-  .search({ type: 'track', query: "Taylor Swift" })
+  .search({ type: 'track', query: req.body.name })
   .then(function(response) {
     console.log(response);
 

@@ -4,7 +4,7 @@ function getMovie(){
 
     var movie = {
         //name: "goddamn best movie"
-        name: $("#omdbSearch").val
+        name: $("#omdbSearch").val()
     }
     
     
@@ -16,9 +16,10 @@ function getBands(){
 
     var band = {
         //name: "goddamn best band"
-        name: $("#bandSearch").val
+        name: $("#bandsSearch").val()
 
     }
+    console.log(band);
 
     axios.post("/get-bands", band).then((res) => {
         console.log(res)
@@ -38,25 +39,22 @@ function getSong(){
     })
 }
 
-$("#bandSearch").click(function(){
+$("#bSearch").on('click' , function(){
     getBands();
 });
 
 
-$("#spotifySearch").click(function(){
+$("#sSearch").on('click' , function(){
     getSong();
+
 });
 
 
-$("#omdbSearch").click(function(){
+$("#mSearch").on('click' , function(){
     getMovie();
+    
+
 })
-//movie search function
-getMovie();
-//bands call function;
-getBands();
-//spotify call function
-getSong();
 
 
 
