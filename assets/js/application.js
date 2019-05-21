@@ -29,14 +29,28 @@ function getSong(){
 
     var song = {
         //name: "goddamn best song"
-        name: $("#spotifySearch").val
+        name: $("#spotifySearch").val().trim()
 
     }
 
-    axios.post("/get-song", song).then((res) => {
+    axios.post("/get-songs", song).then((res) => {
         console.log(res)
     })
 }
+
+$("#bandSearch").click(function(){
+    getBands();
+});
+
+
+$("#spotifySearch").click(function(){
+    getSong();
+});
+
+
+$("#omdbSearch").click(function(){
+    getMovie();
+})
 //movie search function
 getMovie();
 //bands call function;

@@ -96,23 +96,25 @@ app.post("/get-songs",(req,res)=>{
 var Spotify = require('node-spotify-api');
  
 var spotify = new Spotify({
-    // should these be listed here, or referenced in the .env file in some way?
+    // should these be listed here, or referenced in the .env file in some way? quotes needed?
   id: 'de6df564cf50424d91bef44189a517a8',
-  secret: 'e98977fafb2e494db7e730395ae90b5c'
+  secret: 'e98977fafb2e494db7e730395ae90b5c',
 });
  
 spotify
-  .search({ type: 'track', query: 'All the Small Things' })
+//   req.body.name
+  .search({ type: 'track', query: "Taylor Swift" })
   .then(function(response) {
     console.log(response);
-  })
-  .catch(function(err) {
-    console.log(err);
-  });
-    axios.get(queryURL).then((data)=>{
-        console.log(data.data)
-        res.json(data.data)
-     })
+
+
+
+    res.json(response);
+
+   })
+
+
+ 
 
 });
 
