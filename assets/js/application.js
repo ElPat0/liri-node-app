@@ -1,18 +1,20 @@
 
 
-function getMovie(){
+function getMovie() {
 
     var movie = {
         //name: "goddamn best movie"
         name: $("#omdbSearch").val()
     }
-    
-    
+
+
     axios.post("/get-movie", movie).then((res) => {
         console.log(res)
-    })
+    });
+
+    
 }
-function getBands(){
+function getBands() {
 
     var band = {
         //name: "goddamn best band"
@@ -26,7 +28,7 @@ function getBands(){
     })
 }
 
-function getSong(){
+function getSong() {
 
     var song = {
         //name: "goddamn best song"
@@ -39,22 +41,50 @@ function getSong(){
     })
 }
 
-$("#bSearch").on('click' , function(){
+$("#bSearch").on('click', function () {
     getBands();
+    
 });
 
 
-$("#sSearch").on('click' , function(){
+$("#sSearch").on('click', function () {
     getSong();
 
 });
 
 
-$("#mSearch").on('click' , function(){
+$("#mSearch").on('click', function () {
     getMovie();
-    
+
+    //console.log(omdbSearch.val);
+    var newCard = $("<div>");
+//   <div class="card" style="width: 18rem;">
+// <img src="..." class="card-img-top" alt="...">
+// <div class="card-body">
+//   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+// </div>
+///div>
+
+    //jQuery alternative to: newDiv.textContent = "A pleasure to meet you!";
+    var cardTitle = $("<p>");
+    cardTitle.text =  $("#omdbSearch").val();
+
+    // jQuery alternative to: document.querySelector("#empty-div").appendChild(newDiv);
+    $("#card-holder").append(newCard);
+
+    // If we need to apply some CSS, we can quickly do so, using the jQuery ".attr" method.
+    newCard.attr("class", "card card-body");
 
 })
 
 
-
+//var newCard = $("<div>");
+//
+//// jQuery alternative to: newDiv.textContent = "A pleasure to meet you!";
+//newCard.text("Test");
+//
+//// jQuery alternative to: document.querySelector("#empty-div").appendChild(newDiv);
+//$("#card-holder").append(newCard);
+//
+//// If we need to apply some CSS, we can quickly do so, using the jQuery ".attr" method.
+//newCard.attr("class", "card card-body");
