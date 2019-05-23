@@ -8,3 +8,10 @@
     color: blueviolet;
     margin: 10px;
 }
+.card-body{
+    background-color:violet;
+    color: white;
+}
+.new-card{
+    background-color: palevioletred;
+}

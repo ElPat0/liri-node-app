@@ -58,6 +58,10 @@ $("#mSearch").on('click', function () {
 
     //console.log(omdbSearch.val);
     var newCard = $("<div>");
+
+    newCard.attr("class", "card card-body");
+
+
 //   <div class="card" style="width: 18rem;">
 // <img src="..." class="card-img-top" alt="...">
 // <div class="card-body">
@@ -65,15 +69,18 @@ $("#mSearch").on('click', function () {
 // </div>
 ///div>
 
-    //jQuery alternative to: newDiv.textContent = "A pleasure to meet you!";
+    
     var cardTitle = $("<p>");
-    cardTitle.text =  $("#omdbSearch").val();
+    cardTitle.attr("id", "cardTitleText");
+    cardTitle.text =  $("#omdbSearch").val().trim();
+    //newCard.append(CardTitle);
+    $("#cardTitleText").append(newCard);
 
-    // jQuery alternative to: document.querySelector("#empty-div").appendChild(newDiv);
+    
     $("#card-holder").append(newCard);
 
-    // If we need to apply some CSS, we can quickly do so, using the jQuery ".attr" method.
-    newCard.attr("class", "card card-body");
+    
+    
 
 })
 
