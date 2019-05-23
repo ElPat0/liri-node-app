@@ -40,7 +40,7 @@ function getBands() {
 
         var newCard = `
         <div class="card" style="width: 18rem;">
-        <img src="${res.data.Poster}" class="card-img-top" alt="...">
+        
         <div class="card-body">
           <p class="card-text">${res.data[0].datetime}</p>
           <p class="card-text">${res.data[0].venue}</p>
