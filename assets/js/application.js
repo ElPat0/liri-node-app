@@ -16,6 +16,8 @@ function getMovie() {
         <img src="${res.data.Poster}" class="card-img-top" alt="...">
         <div class="card-body">
           <p class="card-text">${res.data.Title}</p>
+          <p class="card-text">${res.data.Genre}</p>
+          <p class="card-text">${res.data.Plot}</p>
         </div>
       </div>`;
 
@@ -40,7 +42,9 @@ function getBands() {
         <div class="card" style="width: 18rem;">
         <img src="${res.data.Poster}" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text">${res.data.Title}</p>
+          <p class="card-text">${res.data[0].datetime}</p>
+          <p class="card-text">${res.data[0].venue}</p>
+          
         </div>
       </div>`;
 
@@ -62,9 +66,11 @@ function getSong() {
 
         var newCard = `
         <div class="card" style="width: 18rem;">
-        <img src="${res.data.Poster}" class="card-img-top" alt="...">
+        <img src="${res.data.tracks.items[0].album.images[0].url}" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text">${res.data.Title}</p>
+          <p class="card-text">${res.data.tracks.items[0].artists[0].name}</p>
+          <p class="card-text">${res.data.tracks.items[0].album.name}</p>
+          <p class="card-text">${res.data.tracks.items[0].album.track_number}</p>
         </div>
       </div>`;
 
